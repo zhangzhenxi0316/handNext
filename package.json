@@ -1,7 +1,6 @@
 {
   "name": "next-hand",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -21,5 +20,18 @@
     "next": "^9.5.5",
     "react": "^17.0.0",
     "react-dom": "^17.0.0"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhangzhenxi0316/next-hand.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zhangzhenxi0316/next-hand/issues"
+  },
+  "homepage": "https://github.com/zhangzhenxi0316/next-hand#readme",
+  "description": ""
 }
