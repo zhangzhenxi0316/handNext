@@ -6,7 +6,7 @@ export default ()=>{
         Router.push({
             pathname:'/a',
             query:{
-                username:'zzx'
+                id:'zzx'
             }
         },'/a/zzx')
     }
