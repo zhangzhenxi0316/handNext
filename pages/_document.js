@@ -1,5 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
-// import { ServerStyleSheet } from "styled-components";
+import { ServerStyleSheet } from "styled-components";
 import { Component } from "react";
 // function withLog(Comp){
 //     return (props)=>{
