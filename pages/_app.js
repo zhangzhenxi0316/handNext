@@ -1,38 +1,32 @@
 import App,{Container} from 'next/app'
 import 'antd/dist/antd.css'
-import MyContext from '../lib/my-context'
+// import MyContext from '../lib/my-context'
+// 集成redux
+import {Provider} from 'react-redux'
+import store from 'redux'
+import Hoc from '../lib/with-rudex'
 class MyApp extends App {
-    static async getInitialProps({Component,ctx}){
-        let pageProps;
-       if(Component.getInitialProps){
-        pageProps = await Component.getInitialProps(ctx)
-       }
-        console.log(1111111)
-        return{
-                pageProps
-        }
-    }
-    render(){
-        const {Component,pageProps} = this.props
-        // console.log(111,pageProps)
-        return(
-            // <Container>
-            <MyContext.Provider value="test">
-                    <Component ></Component>
-            </MyContext.Provider>
-            // </Container>
-        )
-    }
+//    所有组件都要调用所以在这里提供store
+
+render(){
+    const {Component, pageProps, ReduxStore} = this.props
+    console.log('props===>',this.props)
+    return (
+        <Provider store={ReduxStore}>
+            <Component {...pageProps}/>
+        </Provider>
+    )
+}
+}
+MyApp.getInitialProps = async(ctx)=>{
+    const appProps = await App.getInitialProps(ctx)
+    const store = ctx.ReduxStore;
+    // console.log(1111111)
+    console.log('ctx',ctx.Component)
+    console.log('store',store)
+    return {
+        ...appProps
+    } 
 }
 
-// function MyApp({ Component, pageProps }) {
-//     return <Component  {...pageProps}/>
-//   }
-  
-// MyApp.getInitialProps = async (appContext) => {
-//   // calls page's `getInitialProps` and fills `appProps.pageProps`
-//   const appProps = await App.getInitialProps(appContext);
-
-//   return { ...appProps }
-// }
-export default MyApp
+export default Hoc(MyApp)
